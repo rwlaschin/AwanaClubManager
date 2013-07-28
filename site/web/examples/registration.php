@@ -20,7 +20,7 @@ $isDebug='true';
 	            "dojo-debug-messages": true
 	        },
 	        isDebug: <?=$isDebug?>, 
-	        asyncappendChild: true, 
+	        async: true, 
 	        parseOnLoad: false
 	    };
 	</script>
@@ -28,18 +28,15 @@ $isDebug='true';
     <script src="http://rwlaschin.byethost4.com/libs/dojoUtilityClasses.js"></script>
     <script>
         // load requirements for declarative widgets in page content
+        require(["dojo"])
         require(["dojo/parser", "dojo/domReady!"],function(parser) {
         	parser.parse()
         });
-        require(["dojo", "dojo/dom", "dojo/dom-attr", "dojo/dom-construct",
-        		 "dijit/Fieldset",
-        		 "dijit/form/Form",
-        		 "dijit/form/Button",
-        		 "dijit/form/CheckBox",
-        		 "dijit/form/Select",
-        		 "dijit/form/TextBox",
-        		 "dojo/domReady!"], function(dojo,dom,attr,dojoConstruct,
-        		 							Fieldset,Form,Button,Select,Textbox,ToggleButton) {
+        require(["dojo/dom","dojo/on","dojo/dom-form"])
+        require(["dojo/dom", "dojo/dom-attr", "dojo/dom-construct",
+        		 "dijit/Fieldset","dijit/form/Form","dijit/form/Button",
+        		 "dijit/form/CheckBox","dijit/form/Select","dijit/form/TextBox",
+        		], function(dom,attr,dojoConstruct,Fieldset,Form,Button,CheckBox,Select,Textbox) {
         		 	 var elements = []
                      // the code in here is for building the page
                      var container = dom.byId("registrationInformation")
@@ -138,20 +135,38 @@ $isDebug='true';
 	-->
 	</form>
     <!-- store -->
-    <table border=0 width="95%">
+    <table border=0 width="98%">
     	<tr><td>
-	    <button id="btnReset" data-dojo-type="dijit/form/Button"
-	        data-dojo-props="
-	            onClick: function(){ console.log('Reset data'); }">
-	        Reset
-	    </button>
-	       <td align="right">
-	    <button id="btnSave" data-dojo-type="dijit/form/Button"
-	        data-dojo-props="
-	            onClick: function(){ console.log('Save data'); }">
-	        Save
-	    </button>
-
+	    	 <button id="btnSave" data-dojo-type="dijit/form/Button">
+		    	<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+		    		require(["dojo/dom","dojo/dom-form","dojo/_base/xhr"],function(dom,domForm,xhr){
+		            	var content = domForm.toObject('registrationInformation')
+		            	content['redirect'] = "/examples/childsignup.php"
+		            	// open a secondary panel to verify that data is correct?  later
+		            	// ajax call and see if I can use a redirect header with a cookie
+		            	xhr.post({
+		            		url: "/include/handleRegistration.php?" + new Date().getTime(),
+		            		handleAs: "json",
+		            		timeout: 15000, // 15 seconds
+		            		content: content,
+		            		load: function(response,ioArgs) {
+		            			console.log(response)
+		            			console.log(ioArgs)
+		            			if(response && response.redirect) {
+		            				window.location = response.redirect
+		            			}
+		            		}
+		            	})
+		    		})
+		    	</script>
+		        Save
+		    </button>
+	    <td align="right">
+		    <button id="btnReset" data-dojo-type="dijit/form/Button"
+		        data-dojo-props="
+		            onClick: function(){ console.log('Reset data'); }">
+		        Reset
+		    </button>
 	</table>
 
 </body>
