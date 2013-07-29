@@ -1,5 +1,10 @@
 <?php
 
+if(empty($_REQUEST['_familyInformation'])) {
+	echo "<html><head><title>Session Expired</title></head><body><h2>The session has expired</h2><a href='/'>Please return the the login page</a></body></html>";
+	exit;
+}
+
 // This is the registration demo page
 
 // database
@@ -34,19 +39,68 @@ $isDebug='true';
 	    };
 	</script>
     <script src="//ajax.googleapis.com/ajax/libs/dojo/1.9.0/dojo/dojo.js"></script>
+    <script src="//rwlaschin.byethost4.com/libs/dojoUtilityClasses.js"></script>
     <script type="text/javascript">
         // load requirements for declarative widgets in page content
-        require(["dojo/parser", "dojo/query","dojo/NodeList-manipulate","dojo/domReady!"]);
+        require(["dojo/parser", "dojo/domReady!"]);
         require(["dijit/form/Button", "dojo/parser", 
-        		 "dijit/form/Select","dijit/form/TextBox",
+        		 "dijit/form/Select","dijit/form/ValidationTextBox",
         		 "dijit/form/Form","dijit/Fieldset",
-        		 "dijit/form/ToggleButton","dijit/form/DateTextBox",
+        		 "dijit/form/ToggleButton",
+        		 "dijit/form/DateTextBox",
         		 "dojo/NodeList-manipulate",
         		 "dojo/NodeList-dom",
-        		 "dojo/dom-construct"]);
+        		 "dojo/dom-construct",
+        		 "dijit/registry"]);
     </script>
     <script type="text/javascript">
     	var _gNum = 1
+    	function createChildRegistration(tableName,index,domConstruct) {
+    		//var registrationTable = dojo.byId( tableName )
+    		var element = createTextbox('First name: ','child'+index+'_Firstname','',"Enter child's firstname") // first name
+    		dojo.place(createTextbox('Last name: ','child'+index+'_Lastname','',"Enter child's lastname"), element, 'last') // last name
+    		dojo.place(createSelect('child'+index+'_Gender',[
+    				{ label:'Boy',value:'boy',selected:true},
+    				{ label:'Girl',value:'girl',selected:true},
+    			]), element, 'first')
+    		dojo.place(createTextbox('Preferred name:','child'+index+'_Nickname','',"Enter child's preferred/nicknames if any"), element, 'last') // Preferred name
+    		dojo.place("<br/>",element, 'last')
+    		dojo.place(createSelect('child'+index+'_LastBookCompleted',[
+    				{label:'Book1',value:'Book1',selected:true},
+    				{label:'Book2',value:'Book2'},
+    				{label:'Book3',value:'Book3'},
+    				{label:'Book4',value:'Book4'},
+    				{label:'Book5',value:'Book5'},
+    				{label:'Book6',value:'Book6'},
+    				{label:'Book7',value:'Book7'},
+    				{label:'Book8',value:'Book8'},
+    				{label:'Book9',value:'Book9'},
+    				{label:'Book10',value:'Book10'},
+    				{label:'Book11',value:'Book11'}
+    			]), element, 'last' ) // book selection
+    		dojo.place(createDatebox('Birthday:','child'+index+'_Birthday',null,"Enter the child's birthday"), element, 'last') // birthday
+    		dojo.place(createSelect('child'+index+'_Grade', [
+    				{label:"2 yrs or younger", value:'Nursery'},
+    				{label:"3's & 4's", value:'Cubbies',selected:true},
+    				{label:"K-2", value:'Sparks'},
+    				{label:"3-6", value:'T&T'},
+    				{label:"7-8", value:'Trek'},
+    				{label:"9-12", value:'Journey'}
+    			],[{eventid:'onChange',handler:function(){
+    				var id = 'child'+index+'_Club'
+    				var widget = dijit.byId(id)
+    				widget.set('value', this.get('value'))
+    			}}]), element, 'last') // grade
+    		dojo.place(createSelect('child'+index+'_Club', [
+    				{label:"Nursery", value:'Nursery'},
+    				{label:"Cubbies", value:'Cubbies',selected:true},
+    				{label:"Sparks", value:'Sparks'},
+    				{label:"T&T", value:'T&T'},
+    				{label:"Trek", value:'Trek'},
+    				{label:"Journey", value:'Journey'}
+    			]), element, 'last') // club
+    		return element
+    	}
     	function addAnotherChild(tableName) {
     		log('addAnotherChild')
     		// create new row for table

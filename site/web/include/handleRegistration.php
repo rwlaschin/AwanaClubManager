@@ -3,7 +3,13 @@
 // header( "Location: {$_REQUEST['redirect']}");
 // should redirect the user to the new page, but this is off an ajax call, we'll see what happens
 
-setcookie('_familyIdentifier',rand(),time()+1800,'/','*');
+setcookie('_familyInformation',
+	json_encode(array(
+		'identifier' => rand(),
+		'voluenteer' => false
+		),false),
+	time()+1800,'/','*');
+// setcookie('_voluenteer',($_REQUEST['redirect']),time()+1800,'/','*');
 
 echo json_encode(
 	array(

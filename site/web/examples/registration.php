@@ -25,7 +25,7 @@ $isDebug='true';
 	    };
 	</script>
     <script src="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js"></script>
-    <script src="http://rwlaschin.byethost4.com/libs/dojoUtilityClasses.js"></script>
+    <script src="//rwlaschin.byethost4.com/libs/dojoUtilityClasses.js"></script>
     <script>
         // load requirements for declarative widgets in page content
         require(["dojo"])
