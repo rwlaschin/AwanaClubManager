@@ -81,42 +81,42 @@ $isDebug='true';
     				{label: 'Grandfather', value: 'Grandfather'},
     				{label: 'Guardian', value: 'Guardian'}
     			])
-    		var element = createTextbox("First Name: ","Guardian"+index+"_FirstName","","Type first name")
-    		dojo.place(createTextbox("Last Name: ","Guardian"+index+"_LastName","","Type last name"),element,'last')
+    		var element = createTextbox("First Name: ","Guardian"+index+"_FirstName","","Enter first name")
+    		dojo.place(createTextbox("Last Name: ","Guardian"+index+"_LastName","","Enter last name"),element,'last')
     		dojo.place("<br/>",element,'last')
-    		dojo.place(createTextbox("Home Phone: ","Guardian"+index+"_HomePhone","","Type home phone number"),element,'last')
-    		dojo.place(createTextbox("E-mail: ","Guardian"+index+"_Email","","Type e-mail address"),element,'last')
+    		dojo.place(createTextbox("Home Phone: ","Guardian"+index+"_HomePhone","","Enter home phone number"),element,'last')
+    		dojo.place(createTextbox("E-mail: ","Guardian"+index+"_Email","","Enter e-mail address"),element,'last')
     		dojo.place(createCheckBox("Voluenteering: ","Guardian"+index+"_Voluenteer",false,'yes'),element,'last')
     		dojo.place(select,element,'first')
     		return element
     	}
     	function buildAddress(dom) {
     		var index = 1
-    		var element = createTextbox("Street: ","Address"+index+"_Street","","Type street")
-    		dojo.place(createTextbox("City: ","Address"+index+"_City","","Type city"),element,'last')
-    		dojo.place(createTextbox("Zipcode: ","Address"+index+"_Zipcode","","Type zip code"),element,'last')
+    		var element = createTextbox("Street: ","Address"+index+"_Street","","Enter street")
+    		dojo.place(createTextbox("City: ","Address"+index+"_City","","Enter city"),element,'last')
+    		dojo.place(createTextbox("Zipcode: ","Address"+index+"_Zipcode","","Enter zip code"),element,'last')
     		dojo.place("<br/>",element,'last')
     		dojo.place("<label><b>Mailing Address</b></label>",element,'last')
     		index = 2
     		dojo.place(createCheckBox("Check if same as above","Address"+index+"_Same",true,'same'),element,'last')
     		dojo.place("<br/>",element,'last')
-    		dojo.place(createTextbox("Street: ","Address"+index+"_Street","","Type street"),element,'last')
-    		dojo.place(createTextbox("City: ","Address"+index+"_City","","Type city"),element,'last')
-    		dojo.place(createTextbox("Zipcode: ","Address"+index+"_Zipcode","","Type zip code"),element,'last')
+    		dojo.place(createTextbox("Street: ","Address"+index+"_Street","","Enter street"),element,'last')
+    		dojo.place(createTextbox("City: ","Address"+index+"_City","","Enter city"),element,'last')
+    		dojo.place(createTextbox("Zipcode: ","Address"+index+"_Zipcode","","Enter zip code"),element,'last')
     		index = 3
     		dojo.place("<br/>",element,'last')
-    		dojo.place(createTextbox("Local/Home Church: ","Address"+index+"_HomeChurchName","","Type the full name of your home church"),element,'last')
-    		dojo.place(createTextbox("City: ","Address"+index+"_HomeChurchCity","","Type the city of your home church"),element,'last')
+    		dojo.place(createTextbox("Local/Home Church: ","Address"+index+"_HomeChurchName","","Enter the full name of your home church"),element,'last')
+    		dojo.place(createTextbox("City: ","Address"+index+"_HomeChurchCity","","Enter the city of your home church"),element,'last')
     		return element
     	}
     	function buildEmergencyContact(dom) {
     		index = 1
-    		var element = createTextbox("First Name: ","EmergencyContact"+index+"_FirstName","","Type first name")
-    		dojo.place(createTextbox("Last Name: ","EmergencyContact"+index+"_LastName","","Type last name"),element,'last')
-    		dojo.place(createTextbox("Relationship: ","EmergencyContact"+index+"_Relationship","","Type relationship"),element,'last')
+    		var element = createTextbox("First Name: ","EmergencyContact"+index+"_FirstName","","Enter first name")
+    		dojo.place(createTextbox("Last Name: ","EmergencyContact"+index+"_LastName","","Enter last name"),element,'last')
+    		dojo.place(createTextbox("Relationship: ","EmergencyContact"+index+"_Relationship","","Enter relationship"),element,'last')
     		dojo.place("<br/>",element,'last')
-    		dojo.place(createTextbox("Home phone: ","EmergencyContact"+index+"_HomePhone","","Type home phone number"),element,'last')
-    		dojo.place(createTextbox("Cell phone: ","EmergencyContact"+index+"_CellPhone","","Type cell phone number"),element,'last')
+    		dojo.place(createTextbox("Home phone: ","EmergencyContact"+index+"_HomePhone","","Enter home phone number"),element,'last')
+    		dojo.place(createTextbox("Cell phone: ","EmergencyContact"+index+"_CellPhone","","Enter cell phone number"),element,'last')
     		return element
     	}
     </script>

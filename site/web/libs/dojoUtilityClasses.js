@@ -42,7 +42,7 @@ function createDateTextbox(label,name,date,placeHolder) {
         name: name,
         value: date || new Date().getTime(),
         placeHolder: placeHolder,
-        required: false
+        required: false,
         trim:true
     });
     dojo.place(tb.domNode,lb,'last')
@@ -56,6 +56,12 @@ function createCheckBox(label,name,checked,value){
 		value:value
 	});
 	dojo.place(cb.domNode,lb,'last')
+	return lb
+}
+function createSelectWithLabel(label,name,options,callbacks) {
+	var lb = dojo.create('label', {for:name,innerHTML:label})
+	var sb = createSelect(name,options,callbacks)
+	dojo.place(sb,lb,'last')
 	return lb
 }
 function createSelect(name,options,callbacks) {
