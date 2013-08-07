@@ -87,7 +87,7 @@ $isDebug='true';
             dojo.place(createTextbox("Cell Phone: ","Guardian"+index+"_CellPhone","","Enter cell phone number"),element,'last')
     		dojo.place(createTextbox("Home Phone: ","Guardian"+index+"_HomePhone","","Enter home phone number"),element,'last')
     		dojo.place(createTextbox("E-mail: ","Guardian"+index+"_Email","","Enter e-mail address"),element,'last')
-    		dojo.place(createCheckBox("Voluenteering: ","Guardian"+index+"_Voluenteer",false,'yes'),element,'last')
+    		dojo.place(createCheckBox("Volunteering: ","Guardian"+index+"_Voluenteer",false,'yes'),element,'last')
     		dojo.place(select,element,'first')
     		return element
     	}
