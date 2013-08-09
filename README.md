@@ -8,6 +8,7 @@ This is a club management tool for Awana.
 Desired Features
 ----------------
 * User Login and Protection
+* Parent/Leader/Child Registration
 * Tracking and Charts for
   + Attendance
   + Retention
