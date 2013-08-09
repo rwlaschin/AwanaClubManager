@@ -26,8 +26,6 @@ include "dbconfig.php";
 			    \\\"EmergencyContact1_CellPhone\\\":\\\"\\\"}",
 */
 
-
-
 /*
 1 2013-08-05 05:12:35 address {"street":"/.+/","city":"/\w+/","state":"/\w+/","zip":"/\d+(-\d+)?/"}
 2 2013-08-05 05:12:57 phone {"phone":"/\d{3}.\d{3}.\d{4}/"}
@@ -48,7 +46,7 @@ include "dbconfig.php";
 */
 
 class CDatabase {
-	
+/*
 	private static $queries = array (
 		'InsertPersonnel' => "INSERT INTO \`Personnel\` (first_name,last_name) VALUES (?,?)",
 		'InsertAddress' => "INSERT INTO \`AssociationInformation\` (association_type,data) VALUES ('1',?)",
@@ -58,21 +56,19 @@ class CDatabase {
 
 	private	static $host = dbconfig::$host;
 	private	static $database = dbconfig::$database;
-	private	$username = dbconfig::$username;
-	private	$password = dbconfig::$password;
-	private	$connection = null;
+	private	static $username = dbconfig::$username;
+	private	static $password = dbconfig::$password;
+	private	static $connection = null;
 
 	public function __construct() {
-			$this->connection = new PDO("mssql:host={self::$host};dbname={self::$database}", 
-							$this->username,
-							$this->password);
-		}
+		$this->connection = new PDO("mssql:host=".self::$host.";dbname=".self::$database, self::$username, self::$password);
+	}
+*/
+}
 
-};
+// $dbconn = new CDatabase();
 
-$dbconn = new CDatabase();
-
-function addPersonnel() {
+function addPersonnel($dataStore) {
 	// create a new entry in the Personnel
 	// get the id for the new entry
 	
@@ -81,8 +77,5 @@ function addPersonnel() {
 	//  Address
 	//  phone/cell
 	//  staff ... position
-
+	return array(123456789,1);
 }
-
-
-?>
