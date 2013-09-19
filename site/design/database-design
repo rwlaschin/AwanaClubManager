@@ -120,49 +120,64 @@ AssociationTypeAndFormat
 	3, club, 8/2/2013, {"club":"/Nursery|Cubbies|Sparkies|T&T|Journey/"}
 
 	4, books, {"book":"/AppleSeed|HoneyComb|Flight 3:16|HangGlider|WingRunner|SkyStormer|Ultimate Adventure 1|Ultimate Adventure 2|Ultimate Challenge 1|Ultimate Challenge 2/"}
-	5, staff, {"staff":"/Pastor|Commander|Director|Leader|Security|Store|Secretary/"}
-	6, siblings, {"sibling":"/brother|sister/"}
+	5, staff, {"staff":"/Pastor|Commander|Director|Leader|Security|Store|Secretary|Substute/"}
+	6, siblings, {"sibling":"/brother|sister/"} // is this necessary?
 	7, children, {"child":"/son|daughter/}
 	8, guardians, {"guardian":"/father|mother|friend|aunt|uncle|grandpa|grandma/"}
-	9, shares, {"share":"/%d/"}
+	9, shares, {"shares":"/%d/"}
 	10, awards, {"award":"/|||||||||||/"}
 	11, sections, {"section":"/%d|silver|gold/"}
 	12, chapters, {"chapter":"/%d/"}
-	13, teams, {"team":"/Red|Green|Blue|Yellow/"}
+	13, teams, {"team":"/Red|Green|Blue|Yellow|None/"}
 	14, gender, {"gender":"/male|female/"}
 	15, email, {"email":"/[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/"}
+	16, status, {"status":"/active|inactive|waiting list/"}
+	17, family_name, {"family name":"/\w+\sFamily/"}
+	18, dues, {"total":"/\d+/","paid":"/\d+/"}
 
 AssociationInformation
 	id, datetime, type, data (varchar)
 	1, {street:"3542 Macintosh St",city:"Santa Clara",state:"CA",zip:"95054"}
+	13, {"team":"Blue"}
+	13, {"team":"Green"}
+	13, {"team":"Red"}
+	13, {"team":"Yellow"}
+	14, {"gender":"female"}
+	14, {"gender":"male"}
+	15, {"email":"rwlaschin@gmail.com"}
+	16, {"status":"active"}
+	16, {"status":"inactive"}
+	16, {"status":"waiting list"}
 	2, {phone:"408.621.0106"}
-	3, {"club":"Nursery"}
 	3, {"club":"Cubbies"}
+	3, {"club":"Journey"}
+	3, {"club":"Nursery"}
 	3, {"club":"Sparkies"}
 	3, {"club":"T&T"}
-	3, {"club":"Journey"}
 	4, {"book":"AppleSeed"}
-	4, {"book":"HoneyComb"}
 	4, {"book":"Flight 3:16"}
 	4, {"book":"HangGlider"}
-	4, {"book":"WingRunner"}
+	4, {"book":"HoneyComb"}
 	4, {"book":"SkyStormer"}
 	4, {"book":"Ultimate Adventure 1"}
 	4, {"book":"Ultimate Adventure 2"}
 	4, {"book":"Ultimate Challenge 1"}
 	4, {"book":"Ultimate Challenge 2"}
-	5, {staff:"Pastor"}
+	4, {"book":"WingRunner"}
 	5, {staff:"Commander"}
 	5, {staff:"Leader"}
-	5, {staff:"Security"}
+	5, {staff:"Pastor"}
 	5, {staff:"Secretary"}
+	5, {staff:"Security"}
 	5, {staff:"Store"}
-	13, {"team":"Red"}
-	13, {"team":"Green"}
-	13, {"team":"Blue"}
-	13, {"team":"Yellow"}
-	14, {"gender":"male"}
-	14, {"gender":"female"}
+	8, {"guardian":"aunt"}
+	8, {"guardian":"father"}
+	8, {"guardian":"friend"}
+	8, {"guardian":"grandma"}
+	8, {"guardian":"grandpa"}
+	8, {"guardian":"mother"}
+	8, {"guardian":"uncle"}
+
 
 RelationshipMappings (date, association_type, association_id, self_id, relation_id)
 
